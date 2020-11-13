@@ -1,0 +1,328 @@
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  min-height: 95vh;
+  padding-top: 100px;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 100px auto 20px;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    height: 100px;
+    flex-basis: 100%;
+
+    @include tablet {
+      grid-area: 1/1/2/2
+    }
+  }
+
+  &-intro {
+    flex-basis: 35%;
+
+    @include tablet {
+      grid-area: 2/1/3/2
+    }
+
+    @include mobile {
+      flex-basis: 100%;
+    }
+  }
+
+  &-scroll {
+    display: flex;
+    margin: 10px 0 10px auto;
+    flex-basis: 60%;
+    align-items: center;
+
+    @include tablet-small {
+      margin-right: 15px;
+    }
+
+    @include mobile {
+      margin-right: auto;
+      padding-top: 10px;
+    }
+  }
+
+  &-scroller {
+    position: relative;
+    height: 4px;
+    background-color: #888;
+    border-radius: 2px;
+    flex-grow: 1;
+    margin: 0 20px;
+  }
+
+  &-suffix {
+    position: absolute;
+    bottom: -1px;
+    left: calc(0*(90%/11)); // 1st num - project no, 2nd is 100% minu suffix length, 3rd - number of all projects
+    width: 10%;
+    height: 6px;
+    background-color: #111;
+    border-radius: 3px;
+    border: 1px solid #888;
+    transition: left .5s;
+  }
+}
+
+.project {
+  position: relative;
+
+  padding: 20px 40px;
+  min-height: 55vh;
+  margin: 0 0 0 30px;
+
+  box-shadow: $shadow;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 60%;
+
+  @include tablet {
+    grid-area: 1/2/3/3;
+    padding: 10px 30px;
+  }
+
+  @include tablet-small {
+    padding: 40px 10px 10px;
+  }
+
+  @include mobile {
+    flex-basis: 100%;
+    margin: 20px 0 0;
+  }
+
+  &-btns {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &-btn {
+    color: $color-text;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+    margin: 20px 20px 20px 0;
+
+    border-radius: 50%;
+    border: 3px solid $color-text;
+
+    font-size: 2rem;
+    line-height: 44px;
+    cursor: pointer;
+    outline: none;
+
+    @include tablet-small {
+      width: 40px;
+      height: 40px;
+      line-height: 36px;
+      font-size: 1.5rem;
+      margin: 10px 10px 10px 0;
+    }
+
+    &:first-child{
+      padding-right: 3px;
+    }
+
+    &:last-child{
+      padding-left: 3px;
+    }
+
+    &:hover {
+      color: $color-select;
+      border-color: $color-select;
+    }
+  }
+
+  &-title {
+    flex-basis: 100%;
+    font-size: 2.5rem;
+    padding: 20px 0 0;
+    opacity: 1;
+    transition: .3s all;
+  }
+
+  &-tech {
+    flex-basis: 100%;
+    margin: 10px 0;
+    font-style: italic;
+    color: #888;
+    transition: .3s all .1s;
+
+    @include tablet {
+      margin-bottom: 30px;
+    }
+
+    @include mobile {
+      margin-bottom: 10px;
+    }
+  }
+
+  &-desc {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: .3s all .2s;
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+
+    @include mobile {
+      font-size: 1.3rem;
+    }
+
+    &-tech {
+      flex-basis: 75%;
+      transition: .3s all .3s;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &-links {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &-img {
+
+    &-wrapper {
+      flex-basis: 25%;
+      position: relative;
+
+      @include mobile {
+        flex-basis: 100%;
+      }
+    }
+    
+    &-links {
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(221, 19, 19, .8);
+      width: 100%;
+
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      z-index: 3;
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      transition: bottom 1s;
+    }
+
+    &-image {
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      overflow: hidden;
+      height: calc(100% + 120px);
+      // width: calc(200% + 20px); // pixels are padding inside project div
+      width: 450px;
+      max-width: 45vw;
+
+      @include mobile {
+        position: relative;
+        right: 10px;
+        height: auto;
+        padding-top: 75%;
+        width: calc(100% + 20px);
+        max-width: 100vh;
+      }
+
+      &:hover .links {
+        height: 100%;
+        bottom: 0;
+      }
+
+      img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: all .6s;
+ 
+
+        @include tablet-big {
+          right: auto;
+          width: auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        @include tablet {
+          right: auto;
+          width: auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        @include mobile {
+          top: 0;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &-link {
+
+    &-all {
+      margin-left: auto;
+      margin-top: 20px;
+
+      @include tablet {
+        grid-area: 3/2/4/3;
+        justify-self: end;
+      }
+    }
+  }
+
+  &-icon {
+
+    &-wrapper {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      line-height: 46px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      color: #fff;
+
+      &:hover {
+        color: $color-bg;
+        border-color: $color-bg;
+      }
+    }
+  }
+}
+
+.hidden {
+  opacity: 0;
+  // transform: translateX(10px);
+}

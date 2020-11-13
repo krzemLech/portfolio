@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Oswald:wght@600;700&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style/style.scss">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-wrapper"><i class="fas fa-code"></i></span>
+      <span class="regular">krzem</span><span class="bold">Dev</span>
+    </div>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item active"><a href="#hero" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger">
+      <div class="hamburger-item"></div>
+      <div class="hamburger-item"></div>
+      <div class="hamburger-item"></div>
+    </div>
+  </header>
+  <section class="hero" id="hero">
+    <div class="hero-item title">
+      <div class="title-wrapper">
+        <h1>Lech Krzemiński</h1>
+        <p class="title-subtitle"><span id="prompt"></span><span id="cursor">|</span></p>
+        <p class="title-btns">
+          <a class="btn title-btn btn-white" href="#projects">Projects</a>
+          <a class="btn title-btn btn-black" href="#contact">Contact me</a>
+        </p>
+        <p class="title-icons">
+          <a href="https://www.linkedin.com/in/lech-krzemi%C5%84ski-6a91a155/" class="title-social-icon"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/krzemGit" class="title-social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://www.facebook.com/lech.krzeminski" class="title-social-icon"><i
+              class="fab fa-facebook"></i></a>
+        </p>
+      </div>
+
+    </div>
+    <div class="hero-item photo">
+      <img src="./img/tedX-removebg-flipped.png" alt="my photo">
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="about-photo">
+      <!-- <img class="about-img" src="./img/bike_fast.jpg" alt=""> -->
+    </div>
+    <div class="about-content" id="content">
+      <h2 class="about-title">About me</h2>
+      <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed minima
+        modi
+        libero.
+        Reprehenderit
+        corrupti iure itaque, possimus sequi quae debitis veniam, nostrum consequatur omnis molestiae tempore
+        temporibus
+        reiciendis! Corporis odit pariatur facere alias aperiam, laudantium voluptas voluptatum, autem, sed itaque
+        quos
+        non earum hic ipsum nesciunt error deserunt! Sequi.</p>
+
+      <div class="about-coop">
+        <h3 class="about-coop-title">Let's cooperate</h3>
+        <p class="about-coop-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, vitae!</p>
+        <a class="about-coop-link contact-link" href="#">contact me &rArr;</a>
+      </div>
+    </div>
+  </section>
+  <section class="skills" id="skills">
+    <div class="skills-desc">
+      <h2 class="skills-title">Skills</h2>
+      <p class="skills-text">Throughout 18 months of learning I aquired skills that allow me to complete the whole
+        project,
+        from design to depolyment. I have my own could server where I store (and dockerize) my favorite designs. Click
+        below to see the list of skills or move on to the next section to see my works. </p>
+      <ul class="skills-menu">
+        <li class="skills-menu-item" data-skill-no="1">Design</li>
+        <li class="skills-menu-item" data-skill-no="2">Front-end</li>
+        <li class="skills-menu-item" data-skill-no="3">Back-end</li>
+        <li class="skills-menu-item" data-skill-no="4">Deployment</li>
+      </ul>
+    </div>
+    <div class="skills-display">
+      <div class="measure">
+        <p class="measure-unit"><span class="measure-level">Basic</span></p>
+        <p class="measure-unit"><span class="measure-level">Good</span></p>
+        <p class="measure-unit"><span class="measure-level">Badass</span></p>
+        <p class="measure-unit"><span class="measure-level">Rockstar</span></p>
+      </div>
+      <div class="skill skill-none active">
+        <p class="text"><span class="text-bg">Choose</span> <span class="text-front">skills</span></p>
+      </div>
+      <div class="skill skills-design">
+        <div class="skill-one basic new-stack">
+          <p class="skill-name">Figma</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Scrum</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="skill skills-front">
+        <div class="skill-one very-good new-stack">
+          <p class="skill-name">HTML</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">CSS</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">Javascript</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">jQuery</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">React.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Next.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">SASS</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">BEM</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Bootstrap</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Wordpress</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Webpack</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Parcel</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+      <div class="skill skills-back">
+        <div class="skill-one new-stack very-good">
+          <p class="skill-name">Python</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">Flask</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Django</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one new-stack basic">
+          <p class="skill-name">Node.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Express</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">MongoDB</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+      <div class="skill skills-deploy">
+        <div class="skill-one basic new-stack">
+          <p class="skill-name">Docker</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Nginx</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Linux</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="projects" id="projects">
+    <h2 class="projects-title">Projects</h2>
+    <div class="projects-intro">I have completed 11 projects so far, one of them was comercial, three other
+      are in progress. I have used various technologies: vanilla JS and React.js for front-end, python and node.js for
+      the back-end. All projects are described in this section. Hover over the photographs to find links to the apps, to
+      design projects and to the source code on GitHub.</div>
+    <div class="project">
+      <div class="project-btns">
+        <button class="project-btn project-btn-next" id="btn-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="project-btn project-btn-prev"><i class="fas fa-chevron-right" id="btn-next"></i></button>
+      </div>
+      <h3 class="project-title" id="project-title">flaskCompare</h3>
+      <p class="project-tech" id="project-tech">python / flask / javaScript / SASS / BEM</p>
+      <div class="project-desc" id="project-desc">Yyy Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
+        veniam
+        odit
+        pariatur, adipisci ut reprehenderit ipsam labore provident odio excepturi corporis quam quos fugit aperiam
+        maiores velit officiis dolorum officia. Voluptatibus officia vero, assumenda reprehenderit perferendis odit
+        asperiores ea dolore velit natus dignissimos eligendi, magni quas quidem recusandae ipsum incidunt consectetur
+        amet, minus quibusdam at!
+      </div>
+      <div class="project-img-wrapper">
+        <div class="project-img-image">
+          <p class="project-img-links links">
+            <a class="project-icon-wrapper" id="project-link" href="#" target="_blank"><i
+                class="fas fa-link project-icon"></i></a>
+            <a class="project-icon-wrapper" id="project-code" href="#" target="_blank"><i
+                class="fab fa-github-alt project-icon"></i></a>
+            <a class="project-icon-wrapper" id="project-design" href="#" target="_blank"><i
+                class="fas fa-palette project-icon"></i></a>
+          </p>
+          <!-- the order should be consistent with the order in projectList.js -->
+          <img class="project-image" src="./img/thumbs/flask-compare-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/flask-present-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/flask-credit-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/bit-info-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/weather-app-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/info-servis-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/star-trek-crew-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/node-server-sm.png" alt="">
+          <img class="project-image" src="./img/thumbs/node-quiz-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/jackpot-sm.jpg" alt="">
+          <img class="project-image" src="./img/thumbs/rock-sm.jpg" alt="">
+          <img class="project-image" src="./img/flaskCompare.png" alt="">
+          <img class="project-image" src="./img/flaskCompare.png" alt="">
+          <img class="project-image" src="./img/flaskCompare.png" alt="">
+        </div>
+      </div>
+      <div class="project-desc-tech" id="project-tech-desc">EEE Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Saepe, veniam odit
+        pariatur, adipisci ut reprehenderit ipsam labore provident odio excepturi corporis quam quos fugit aperiam
+        maiores velit officiis dolorum officia. Voluptatibus officia vero, assumenda reprehenderit perferendis odit
+        asperiores ea dolore velit natus dignissimos eligendi, magni quas quidem recusandae ipsum incidunt consectetur
+        amet, minus quibusdam at!
+      </div>
+      <div class="projects-scroll">
+        <span class="projects-no-prev" id="scroll-prev">00</span>
+        <p class="projects-scroller">
+          <span class="projects-suffix" id="scroll-suffix"></span>
+        </p>
+        <span class="projects-no-next" id="scroll-next">02</span>
+      </div>
+    </div>
+    <a class="project-link-all contact-link" href="#footer">project list &rArr;</a>
+  </section>
+  <section class="contact" id="contact">
+    <h2 class="contact-title">Contact Me</h2>
+    <p class="contact-subtitle">Say <span class="contact-hi">Hi!</span> or contact me via the social media.</p>
+    <form action="" method="POST" class="contact-form form">
+      <p class="form-feedback" id="feedback">feedback</p>
+      <fieldset class="form-field form-field-half">
+        <label class="form-label" for="name">Your Name:</label>
+        <input class="form-input" type="text" name="name" id="name">
+      </fieldset>
+      <fieldset class="form-field form-field-half">
+        <label class="form-label" for="email">Your E-mail:</label>
+        <input class="form-input" type="email" name="email" id="email">
+      </fieldset>
+      <fieldset class="form-field">
+        <label class="form-label" for="subject">Message Subject:</label>
+        <input class="form-input" type="text" name="subject" id="subject">
+      </fieldset>
+      <fieldset class="form-field form-field-message">
+        <label class="form-label" for="message">Your Message...</label>
+        <textarea class="form-input form-input-area" type="text" name="message" id="message">
+      </fieldset>
+      <fieldset class="form-field form-field-btn">
+        <span class="form-btn-wrapper" id="submit-wrapper">
+          <input class="form-btn" type="submit" value="Send!" id="submit-btn" disabled>
+        </span>
+      </fieldset>
+    </form>
+  </section>
+  <footer id="footer" class="footer">
+    <div class="footer-section"><p class="footer-logo">Krzem<span class="bold">Dev</span><span class="copy">&copy</span></p></div>
+    <div class="footer-section">
+      <h3 class="footer-title footer-title-social">Contact & social media</h3>
+      <p class="footer-social-field">
+        <a href="" class="footer-social-link">
+          <span class="footer-social-icon"><i class="far fa-envelope"></i></span>
+          <span class="footer-social-name">lechkrzeminski@gmail.com</span>
+        </a>
+      </p>
+      <p class="footer-social-field">
+        <a href="" class="footer-social-link">
+          <span class="footer-social-icon"><i class="fab fa-linkedin"></i></span>
+          <span class="footer-social-name">LinkedIn</span>
+        </a>
+      </p>
+      <p class="footer-social-field">
+        <a href="" class="footer-social-link">
+          <span class="footer-social-icon"><i class="fab fa-facebook"></i></span>
+          <span class="footer-social-name">facebook</span>
+        </a>
+      </p>
+      <p class="footer-social-field">
+        <a href="" class="footer-social-link">
+          <span class="footer-social-icon"><i class="fab fa-github"></i></span>
+          <span class="footer-social-name">github</span>
+        </a>
+      </p>
+    </div>
+    <div class="footer-section footer-section-wide">
+      <h3 class="footer-title footer-title-project">Project list</h3>
+      <ul class="footer-project-list">
+        <li class="footer-project-item"><a href="" class="footer-project-link">Paper - Rock - Scissors</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">Jackpot</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">Ten questions (nodeQuiz)</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">Node Server</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">Star-Trek Crew</a></li>
+      </ul>
+      <ul class="footer-project-list">
+        <li class="footer-project-item"><a href="" class="footer-project-link">infoPortal</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">weatherApp</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">cryptoNews</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">flaskCredit</a></li>
+        <li class="footer-project-item"><a href="" class="footer-project-link">flaskPresent</a></li>
+      </ul>
+      <ul class="footer-project-list">
+        <li class="footer-project-item"><a href="" class="footer-project-link">flaskCompare</a></li>
+        <li class="footer-project-item"> </li>
+        <li class="footer-project-item in-progress"><a href="" class="footer-project-link">RaszBoard</a></li>
+        <li class="footer-project-item in-progress"><a href="" class="footer-project-link">MorisWebSite</a></li>
+        <li class="footer-project-item in-progress"><a href="" class="footer-project-link">KrzePa foto</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

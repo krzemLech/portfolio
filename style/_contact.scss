@@ -1,0 +1,230 @@
+$form-width: 60vw;
+$form-width-mobile: 80vw;
+$feedback-anime-time: 6s;
+
+@keyframes fadeout {
+  0% {opacity: 1};
+  50% {opacity: 1};
+  100% {opacity: 0};
+}
+
+.contact {
+  $v-margin-big: 30px;
+  font-size: 2rem; 
+
+  @include tablet-big {
+    min-height: 75vh
+  }
+
+  @include mobile {
+    font-size: 1.4rem;
+  }
+
+
+  &-title {
+    text-align: center;
+  }
+
+  &-subtitle {
+    text-align: center;
+    margin-bottom: 10px;
+
+    @include mobile {
+      font-size: 1.4rem;
+    }
+  }
+
+  &-hi {
+    font-weight: 700;
+    font-style: italic;
+  }  
+}
+
+.form {
+  font-size: 0;
+  $v-margin-small: 25px;
+
+  width: $form-width;
+  margin: 0 auto;
+
+  @include mobile {
+    width: $form-width-mobile;
+  }
+
+  &-feedback {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    color: none;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 1rem;
+    opacity: 0;
+
+    &.red {
+      background-color: rgba(221, 19, 19, .1);
+      border: 2px solid rgba(221, 19, 19, .5);
+      color: $color-select;
+      animation: fadeout 6s forwards;
+    }
+
+    &.green {
+      background-color: rgba(0, 255, 0, .1);
+      border: 2px solid rgba(0, 255, 0, .5);
+      color: green;
+      animation: fadeout 6s forwards;
+    }
+  }
+
+  &-field {
+    position: relative;
+    margin-bottom: $v-margin-small;
+
+    &-half {
+      display: inline-block;
+      width: calc(50% - 10px);
+
+      @include mobile {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    &-message {
+      display: inline-block;
+      width: auto;
+      height: auto;
+
+      &::after {
+        bottom: 5px;
+      }
+    }
+
+    &-btn {
+      &::after {
+        height: 0;
+        background-color: transparent;
+      }
+    }
+
+    &:first-of-type {
+      margin-right: 20px;
+
+      @include mobile {
+        margin-right: 0;
+      }
+    }
+
+    &:last-child {
+      text-align: center;
+    }
+
+    &::after {
+      content: '';
+      width: 0;
+      height: 4px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: all .5s;
+    }
+
+    &:focus-within {
+      .form-label {
+        color: $color-select;
+      }
+
+      &::after {
+        width: 100%;
+        background-color: $color-select;
+      }
+
+      &.valid {
+        .form-label {
+          color: green;
+        }
+
+        &::after {
+          background-color: green;;
+        }
+      }
+    }
+  }
+
+  &-label {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    z-index: 1;
+
+    text-transform: uppercase;
+    color: #555;
+    font-size: 1.5rem;
+
+    transition: all .5s;
+
+    @include mobile {
+      font-size: 1.1rem;
+    }
+  }
+
+  &-input {
+    height: 70px;
+    width: 100%;
+    background-color: #222;
+
+    font-size: 2.2rem;
+    color: $color-text;
+    padding: 20px 10px 0;
+
+    @include mobile {
+      font-size: 1.4rem;
+      height: 50px;
+      padding-top: 15px;
+    }
+
+    &-area {
+      height: 250px;
+      width: $form-width;
+      padding-top: 30px;
+
+      @include mobile {
+        width: $form-width-mobile;
+      }
+    }
+  }
+
+  &-btn {
+    background-color: $color-text;
+    border-radius: 20px;
+    color: $color-bg;
+
+    padding: 15px 60px;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+
+    margin: 20px auto;
+    cursor: not-allowed;
+    transition: background-color .5s;
+
+    &-wrapper {
+      display: inline-block;
+    }
+
+    &:hover {
+      background-color: $color-select;
+      box-shadow: 5px 5px 5px #000;
+    }
+
+    &.valid {
+      cursor: pointer;
+
+      &:hover {
+        background-color: green;
+      }
+    }
+  }
+}
+
