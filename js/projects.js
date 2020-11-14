@@ -17,7 +17,8 @@ class Projects {
     this.design = document.getElementById('project-design');
 
     // images
-    this.images = document.querySelectorAll('.project-image');
+    this.images = document.querySelectorAll('.display-image');
+    this.imageWrapper = document.getElementById('image-wrapper')
 
     // scroller
     this.prevNo = document.getElementById('scroll-prev');
@@ -27,7 +28,7 @@ class Projects {
     this.nextBtn.addEventListener('click', () => {
       if (this.currentProject < projectList.length - 1) {
         this.currentProject++;
-        this.renderProject();
+        this.renderProject('next');
         console.log(this.currentProject);
       } else {
         console.log('no more projects');
@@ -36,17 +37,16 @@ class Projects {
     this.prevBtn.addEventListener('click', () => {
       if (this.currentProject > 0) {
         this.currentProject--;
-        this.renderProject();
+        this.renderProject('prev');
         console.log(this.currentProject);
       } else {
         console.log('this is the first project');
       }
     })
   }
-  renderProject = () => {
-    console.log('Render');
+  renderProject = (direction = false) => {
     this.changeScroll();
-    this.animateChange(600); // equal to the animation time in _projects.scss file.
+    this.animateChange(600, direction); // equal to the animation time in _projects.scss file.
   }
   changeTexts = () => {
     this.title.textContent = projectList[this.currentProject].title;
@@ -78,15 +78,22 @@ class Projects {
       this.prevBtn.disabled = false;
     }, time)
   }
-  animateChange = (delay) => { // delay in milisec
+  slideImg = (direction) => {
+    if (direction) {
+      this.imageWrapper.classList.add(`slide-${direction}`);
+      setTimeout(() => this.imageWrapper.classList.remove(`slide-${direction}`), 1200)
+    }
+  }
+  animateChange = (delay, dir) => { // delay in milisec
     this.disableBtns(delay);
     this.title.classList.add('hidden')
     this.techs.classList.add('hidden')
     this.desc.classList.add('hidden')
     this.techDesc.classList.add('hidden')
-    this.images.forEach(image => image.classList.add('hidden'))
+    this.slideImg(dir);
     setTimeout(() => {
       this.changeTexts();
+      this.images.forEach(image => image.classList.add('hidden'))
       this.images[this.currentProject].classList.remove('hidden')
       this.title.classList.remove('hidden')
       this.techs.classList.remove('hidden')

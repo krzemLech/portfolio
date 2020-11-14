@@ -1,78 +1,194 @@
+@keyframes slide {
+  0% {left: 100%}
+  70% {left: 0; right: 0}
+  100% {right: 100%; left: 0}
+}
+
+@keyframes slide-back {
+  0% {right: 100%; left: 0}
+  70% {right: 0; left: 0}
+  100% {left: 100%; right: 0}
+}
+
 .projects {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 
   min-height: 95vh;
   padding-top: 100px;
 
-  @include tablet {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    grid-template-rows: 100px auto 20px;
+  @include tablet-big {
+    min-height: 70vh;
   }
 
-  @include mobile {
-    display: flex;
+  @include tablet {
+    min-height: 70vh;
+  }
+
+  @include tablet-small {
+    position: relative;
     flex-direction: column;
+  }
+
+  &-section {
+    position: relative;
+    flex-basis: 50%;
+
+    @include tablet-small {
+      padding: 0;
+      flex-basis: auto;
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-right: 15px;
+
+      @include tablet-big {
+        flex-basis: 40%;
+      }
+
+      @include tablet {
+        flex-basis: 40%;
+      }
+
+      @include tablet-small {
+        padding: 0;
+      }
+    }
+
+    &-right {
+      padding: 100px 0 30px 15px;
+
+      @include tablet-big {
+        padding-top: 0;
+        font-size: 1.2rem;
+        flex-basis: 60%;
+      }
+
+      @include tablet {
+        padding-top: 0;
+        font-size: 1.2rem;
+        flex-basis: 60%
+      }
+
+      @include tablet-small {
+        padding: 0;
+        position: static;
+      }
+    }
   }
 
   &-title {
     height: 100px;
-    flex-basis: 100%;
-
-    @include tablet {
-      grid-area: 1/1/2/2
-    }
-  }
-
-  &-intro {
-    flex-basis: 35%;
-
-    @include tablet {
-      grid-area: 2/1/3/2
-    }
-
-    @include mobile {
-      flex-basis: 100%;
-    }
-  }
-
-  &-scroll {
-    display: flex;
-    margin: 10px 0 10px auto;
-    flex-basis: 60%;
-    align-items: center;
 
     @include tablet-small {
-      margin-right: 15px;
+      height: 80px;
     }
+  } 
 
-    @include mobile {
-      margin-right: auto;
-      padding-top: 10px;
-    }
+  &-intro {
+    margin-bottom: 20px;
   }
+}
 
-  &-scroller {
-    position: relative;
-    height: 4px;
-    background-color: #888;
-    border-radius: 2px;
-    flex-grow: 1;
-    margin: 0 20px;
-  }
+.display {
+  position: relative;
+  overflow: hidden;
+  padding-top: 75%;
+  box-shadow: 5px 5px 10px #000;
+  margin-top: auto;
+  width: 100%;
 
-  &-suffix {
+  align-self: flex-end;
+
+  &::before, &::after {
+    content: '';
     position: absolute;
-    bottom: -1px;
-    left: calc(0*(90%/11)); // 1st num - project no, 2nd is 100% minu suffix length, 3rd - number of all projects
-    width: 10%;
-    height: 6px;
-    background-color: #111;
-    border-radius: 3px;
-    border: 1px solid #888;
-    transition: left .5s;
+    background-color: #333;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 100%;
+    z-index: 4;
+    padding-top: 30%;
+    font-size: 2rem;
+    color: #888;
+    text-align: center;
+    padding-top: calc(40% - 2rem);
+    overflow: hidden;
+  }
+  
+  &.slide-next {
+    &::before {
+      content: 'next';
+      animation: linear slide .875s;
+    }
+  }
+
+  &.slide-prev {
+    &::after {
+      content: 'previous';
+      animation: linear slide-back .875s;
+    }
+  }
+
+  &-links {
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(221, 19, 19, .8);
+    width: 100%;
+
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    transition: bottom 1s;
+  }
+
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform:translateX(-50%);
+    height: 100%;
+    transition: transform .6s;
+    opacity: 1;
+  }
+
+  &:hover .links {
+    height: 100%;
+    bottom: 0;
+  }
+
+  &-icon {
+
+    &-wrapper {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      line-height: 46px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      color: #fff;
+
+      &:hover {
+        color: $color-bg;
+        border-color: $color-bg;
+      }
+    }
   }
 }
 
@@ -81,7 +197,6 @@
 
   padding: 20px 40px;
   min-height: 55vh;
-  margin: 0 0 0 30px;
 
   box-shadow: $shadow;
 
@@ -90,15 +205,10 @@
   flex-basis: 60%;
 
   @include tablet {
-    grid-area: 1/2/3/3;
     padding: 10px 30px;
   }
 
   @include tablet-small {
-    padding: 40px 10px 10px;
-  }
-
-  @include mobile {
     flex-basis: 100%;
     margin: 20px 0 0;
   }
@@ -124,7 +234,7 @@
     cursor: pointer;
     outline: none;
 
-    @include tablet-small {
+    @include tablet {
       width: 40px;
       height: 40px;
       line-height: 36px;
@@ -152,6 +262,11 @@
     padding: 20px 0 0;
     opacity: 1;
     transition: .3s all;
+    word-wrap: break-word;
+
+    @include tablet-small {
+      padding-top: 40px;
+    }
   }
 
   &-tech {
@@ -165,7 +280,7 @@
       margin-bottom: 30px;
     }
 
-    @include mobile {
+    @include tablet-small {
       margin-bottom: 10px;
     }
   }
@@ -194,106 +309,51 @@
     }
   }
 
-  &-links {
-    height: 0;
-    overflow: hidden;
+  &-scroll {
+    display: flex;
+    margin: 10px 0;
+    flex-basis: 100%;
+    align-items: center;
+
+    @include tablet-small {
+      margin-right: 15px;
+      margin-right: auto;
+      padding-top: 10px;
+    }
   }
 
-  &-img {
+  &-scroller {
+    position: relative;
+    height: 4px;
+    background-color: #888;
+    border-radius: 2px;
+    flex-grow: 1;
+    margin: 0 20px;
+  }
 
-    &-wrapper {
-      flex-basis: 25%;
-      position: relative;
-
-      @include mobile {
-        flex-basis: 100%;
-      }
-    }
-    
-    &-links {
-      height: 100%;
-      overflow: hidden;
-      background-color: rgba(221, 19, 19, .8);
-      width: 100%;
-
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      right: 0;
-      z-index: 3;
-
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-
-      transition: bottom 1s;
-    }
-
-    &-image {
-      position: absolute;
-      top: 5px;
-      right: 20px;
-      overflow: hidden;
-      height: calc(100% + 120px);
-      // width: calc(200% + 20px); // pixels are padding inside project div
-      width: 450px;
-      max-width: 45vw;
-
-      @include mobile {
-        position: relative;
-        right: 10px;
-        height: auto;
-        padding-top: 75%;
-        width: calc(100% + 20px);
-        max-width: 100vh;
-      }
-
-      &:hover .links {
-        height: 100%;
-        bottom: 0;
-      }
-
-      img {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        transition: all .6s;
- 
-
-        @include tablet-big {
-          right: auto;
-          width: auto;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
-        @include tablet {
-          right: auto;
-          width: auto;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
-        @include mobile {
-          top: 0;
-          height: 100%;
-        }
-      }
-    }
+  &-suffix {
+    position: absolute;
+    bottom: -1px;
+    left: calc(0*(90%/11)); // 1st num - project no, 2nd is 100% minu suffix length, 3rd - number of all projects
+    width: 10%;
+    height: 6px;
+    background-color: #111;
+    border-radius: 3px;
+    border: 1px solid #888;
+    transition: left .5s;
   }
 
   &-link {
 
     &-all {
-      margin-left: auto;
-      margin-top: 20px;
+      position: absolute;
+      bottom: 0;
+      right: 0; 
 
-      @include tablet {
-        grid-area: 3/2/4/3;
-        justify-self: end;
+      @include tablet-small {
+        top: 110px;
+        right: 10%;
+        bottom: auto;
       }
     }
   }
@@ -324,5 +384,4 @@
 
 .hidden {
   opacity: 0;
-  // transform: translateX(10px);
 }

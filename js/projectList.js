@@ -90,7 +90,7 @@ const projectList = [
     para2: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia doloremque ut ex, itaque omnis optio dolore repellat quam unde accusamus pariatur cupiditate, nihil rerum delectus sed placeat adipisci necessitatibus maxime eum incidunt nulla animi sequi. Quas fuga voluptate magnam odio error laborum, porro, ab sapiente, amet dolorem repudiandae voluptatem inventore.",
   },
   {
-    title: "rockPaperScissors",
+    title: "rockPaper",
     link: "https://krzemgit.github.io/rock-paper-scissors/",
     code: "https://github.com/krzemGit/rock-paper-scissors",
     design: "https://www.krzem.dev/no-mockup",

@@ -85,7 +85,7 @@ $feedback-anime-time: 6s;
       display: inline-block;
       width: calc(50% - 10px);
 
-      @include mobile {
+      @include tablet-small {
         display: block;
         width: 100%;
       }
@@ -118,6 +118,10 @@ $feedback-anime-time: 6s;
 
     &:last-child {
       text-align: center;
+
+      &::after {
+        content: none;
+      }
     }
 
     &::after {

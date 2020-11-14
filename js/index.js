@@ -137,3 +137,4 @@ const skillDisplay = new SkillDisplay();
 
 const form = new Form();
 const projects = new Projects();
+projects.renderProject();

@@ -83,6 +83,13 @@ class Form {
       this.formValid = false;
     }
   }
+  validateAll = () => {
+    this.validateName();
+    this.validateEmail();
+    this.validateSubject();
+    this.validateMessage();
+    this.validateForm();
+  }
   manageClasses = () => {
     this.nameValid ? this.name.parentNode.classList.add('valid') : this.name.parentNode.classList.remove('valid');
 
@@ -106,9 +113,18 @@ class Form {
     this.feedbackBox.classList.add(color)
     setTimeout(() => this.feedbackBox.classList.remove(color), 6000) // timeout equal to animation length in contact section
   }
+  clearInputs = () => {
+    this.inputs.forEach(input => {
+      console.log(input.value);
+      input.value = '';
+    })
+  }
   sendMessage = () => {
     if (this.formValid) {
       this.giveFeedback('message sent', 'green')
+      this.clearInputs();
+      this.validateAll();
+      this.manageClasses();
       // TODO: send this to the backend
     } else {
       this.giveFeedback('form is not validated', 'red')
