@@ -1,4 +1,4 @@
-// about 
+// about section
 
 .about {
   --height-img: 80vh;
@@ -67,11 +67,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: calc(var(--height-img)*.4);
-
-    @include tablet {
-      padding-top: calc(var(--height-img)*.2);
-    }
 
     @include mobile {
       padding-top: 0;
@@ -82,12 +77,8 @@
     flex-basis: 100%;
     font-size: 4rem;
 
-    @include tablet {
-      margin-bottom: calc(var(--height-img)*.5);
-    }
-
     @include mobile {
-      margin-bottom: calc(var(--height-img));
+      margin-bottom: calc(var(--height-img) - 65px);
     }
   } 
 
@@ -103,11 +94,15 @@
     }
   }
 
+  &-paragraph {
+    margin-bottom: 10px;
+  }
+
   &-coop {
     flex-basis: 35%;
 
     @include tablet {
-      margin-top: 90px;
+      margin-top: calc(var(--height-img) - 50px);
     }
 
     @include mobile {

@@ -1,14 +1,22 @@
-import projectList from "./projectList"
+import projectList from "./data/projectList"
 
 class Projects {
   constructor() {
     // controls
     this.nextBtn = document.getElementById("btn-next");
     this.prevBtn = document.getElementById("btn-prev");
+
+    // content and animation variables
     this.currentProject = 0;
+    this.currentTitle = projectList[this.currentProject].title;
+    this.deleting = true;
+    this.timeoutIndex = 0;
+    this.delay = 600; // equal to the $animation-length in _project.scss
+    this.iteration = this.currentTitle.length;
 
     //display
-    this.title = document.getElementById('project-title');
+    this.title = document.querySelector('.project-title-prompt');
+    this.cursor = document.querySelector('.project-title-cursor');
     this.techs = document.getElementById('project-tech');
     this.desc = document.getElementById('project-desc');
     this.techDesc = document.getElementById('project-tech-desc');
@@ -18,7 +26,7 @@ class Projects {
 
     // images
     this.images = document.querySelectorAll('.display-image');
-    this.imageWrapper = document.getElementById('image-wrapper')
+    this.imageWrapper = document.getElementById('image-wrapper');
 
     // scroller
     this.prevNo = document.getElementById('scroll-prev');
@@ -29,7 +37,6 @@ class Projects {
       if (this.currentProject < projectList.length - 1) {
         this.currentProject++;
         this.renderProject('next');
-        console.log(this.currentProject);
       } else {
         console.log('no more projects');
       }
@@ -38,7 +45,6 @@ class Projects {
       if (this.currentProject > 0) {
         this.currentProject--;
         this.renderProject('prev');
-        console.log(this.currentProject);
       } else {
         console.log('this is the first project');
       }
@@ -46,7 +52,7 @@ class Projects {
   }
   renderProject = (direction = false) => {
     this.changeScroll();
-    this.animateChange(600, direction); // equal to the animation time in _projects.scss file.
+    this.animateChange(direction); // equal to the animation time in _projects.scss file.
   }
   changeTexts = () => {
     this.title.textContent = projectList[this.currentProject].title;
@@ -62,7 +68,11 @@ class Projects {
     let next = this.currentProject + 2;
 
     prev = prev > 9 ? prev : '0' + prev;
-    next = next > 9 ? next : '0' + next;
+    if (next < 10) {
+      next = '0' + next;
+    } else if (next > projectList.length) {
+      next = 'end'
+    }
 
     this.prevNo.textContent = prev;
     this.nextNo.textContent = next;
@@ -70,36 +80,70 @@ class Projects {
     let left = this.currentProject * (90 / (projectList.length - 1));
     this.suffix.style.left = left + '%'
   }
-  disableBtns = (time) => {
-    this.nextBtn.disabled = true;
-    this.prevBtn.disabled = true;
-    setTimeout(() => {
+  disableBtns = (action) => {
+    if (action) {
+      this.nextBtn.disabled = true;
+      this.prevBtn.disabled = true;
+    } else {
       this.nextBtn.disabled = false;
       this.prevBtn.disabled = false;
-    }, time)
+    }
   }
   slideImg = (direction) => {
     if (direction) {
       this.imageWrapper.classList.add(`slide-${direction}`);
-      setTimeout(() => this.imageWrapper.classList.remove(`slide-${direction}`), 1200)
+      setTimeout(() => {
+        this.images.forEach(image => image.classList.add('hidden'));
+        this.images[this.currentProject].classList.remove('hidden');
+      }, this.delay)
+      setTimeout(() => this.imageWrapper.classList.remove(`slide-${direction}`), this.delay * 2)
     }
   }
-  animateChange = (delay, dir) => { // delay in milisec
-    this.disableBtns(delay);
-    this.title.classList.add('hidden')
-    this.techs.classList.add('hidden')
-    this.desc.classList.add('hidden')
-    this.techDesc.classList.add('hidden')
-    this.slideImg(dir);
-    setTimeout(() => {
+  manageProjectDesc = (action, className) => {
+    if (action === "add") {
+      this.techs.classList.add(className);
+      this.desc.classList.add(className);
+      this.techDesc.classList.add(className);
+    } else if (action === 'remove') {
+      this.techs.classList.remove(className)
+      this.desc.classList.remove(className)
+      this.techDesc.classList.remove(className);
+    }
+  }
+  animateTitle = () => {
+
+    clearTimeout(this.timeoutIndex);
+
+    if (this.deleting === true && this.iteration > 0) {
+      this.iteration--;
+      this.title.textContent = this.currentTitle.substring(0, this.iteration)
+    } else if (this.iteration === 0) {
+      this.currentTitle = projectList[this.currentProject].title;
+      this.deleting = false;
+      ++this.iteration;
+    } else if (this.deleting === false && this.iteration < this.currentTitle.length) {
+      ++this.iteration;
+      this.title.textContent = this.currentTitle.substring(0, this.iteration)
+    } else if (this.iteration === this.currentTitle.length) {
+      clearTimeout(this.timeoutIndex);
+      this.deleting = true;
       this.changeTexts();
-      this.images.forEach(image => image.classList.add('hidden'))
-      this.images[this.currentProject].classList.remove('hidden')
-      this.title.classList.remove('hidden')
-      this.techs.classList.remove('hidden')
-      this.desc.classList.remove('hidden')
-      this.techDesc.classList.remove('hidden')
-    }, delay)
+      this.manageProjectDesc('remove', 'hidden');
+      setTimeout(() => {
+        this.cursor.classList.add('hidden');
+        this.disableBtns(false)
+      }, this.delay);
+      return true;
+    }
+    this.timeoutIndex = setTimeout(() => this.animateTitle(), 75)
+  }
+  animateChange = (dir) => {
+    this.disableBtns(true);
+    this.manageProjectDesc('add', 'hidden')
+    this.slideImg(dir);
+    this.cursor.classList.remove('hidden')
+    this.animateTitle();
+    // this last function must end all of the above, since it is async and should wait for the cursor to finish typing title before showing other texts 
   }
 }
 

@@ -1,3 +1,5 @@
+// footer styling in three sections: logo, social icons and project list
+
 .footer {
   position: relative;
   background-color: #000;
@@ -190,9 +192,25 @@
         padding-right: 10px;
       }
     }
+    &-name {
+      word-wrap: break-word;
+
+      &.email {
+
+        @include tablet-big {
+          margin-right: 10px;
+        }
+      }
+    }
+
     &-icon {
       display: inline-block;
       width: 30px;
+    }
+
+    &-link.disabled {
+      pointer-events: none;
+      cursor: default;
     }
   }
 

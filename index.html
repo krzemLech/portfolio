@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me</title>
+  <title>Krzem</title>
+  <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
@@ -65,20 +67,27 @@
     </div>
     <div class="about-content" id="content">
       <h2 class="about-title">About me</h2>
-      <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam sed minima
-        modi
-        libero.
-        Reprehenderit
-        corrupti iure itaque, possimus sequi quae debitis veniam, nostrum consequatur omnis molestiae tempore
-        temporibus
-        reiciendis! Corporis odit pariatur facere alias aperiam, laudantium voluptas voluptatum, autem, sed itaque
-        quos
-        non earum hic ipsum nesciunt error deserunt! Sequi.</p>
-
+      <div class="about-text">
+        <p class="about-paragraph">I am an aspiring full-stack developer, focused on the front-end, but also a huge
+          python
+          enthusiast. My favourite frameworks are Flask and Django, although recently I was captivated by React.js. My
+          experience is limited, as I have so far created ten hobby and one commerical project. Recently, however,
+          I
+          was asked to make several other commercial desgins, including a school app for students (in Django) and two
+          commerical websites: for a construction company and a photographer. You can find several of my projects in
+          sections
+          below.</p>
+        <p class="about-paragraph">My interests include programming, which I have developed for the last 18 months,
+          initially as a hobby. My commitment and enthusisam grew exponentially and
+          now I have decided to make it my daytime job. Aside from programming, I am also interested in calisthenics,
+          cycling,
+          startegic games and history. I speak fluent English and have quite an extensive managing experience.</p>
+      </div>
       <div class="about-coop">
         <h3 class="about-coop-title">Let's cooperate</h3>
-        <p class="about-coop-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, vitae!</p>
-        <a class="about-coop-link contact-link" href="#">contact me &rArr;</a>
+        <p class="about-coop-text">If you would like to cooperate with me, please use a contact form below or see
+          contact details in the footer. See U around!</p>
+        <a class="about-coop-link contact-link" href="#contact">contact me &rArr;</a>
       </div>
     </div>
   </section>
@@ -87,7 +96,7 @@
       <h2 class="skills-title">Skills</h2>
       <p class="skills-text">Throughout 18 months of learning I aquired skills that allow me to complete the whole
         project,
-        from design to depolyment. I have my own could server where I store (and dockerize) my favorite designs. Click
+        from design to deployment. I have my own could server where I store (and dockerize) my favorite designs. Click
         below to see the list of skills or move on to the next section to see my works. </p>
       <ul class="skills-menu">
         <li class="skills-menu-item" data-skill-no="1">Design</li>
@@ -213,10 +222,12 @@
   <section class="projects" id="projects">
     <div class="projects-section projects-section-left">
       <h2 class="projects-title">Projects</h2>
-      <div class="projects-intro">I have completed 11 projects so far, one of them was comercial, three other
+      <div class="projects-intro">I have completed 11 projects so far, one of them was comercial, three further
+        commerical designs
         are in progress. I have used various technologies: SASS, vanilla JS and React.js for front-end, python and
         node.js for
-        back-end. All projects are described in this section, each has its own design prepared in figma. Hover over the
+        back-end. All projects are described in this section, each has its own design layout prepared in figma. Hover
+        over the
         photographs to find links to the apps,
         to
         design projects and to the source code on GitHub.</div>
@@ -229,6 +240,14 @@
               class="fab fa-github-alt project-icon"></i></a>
           <a class="display-icon-wrapper" id="project-design" href="#" target="_blank"><i
               class="fas fa-palette project-icon"></i></a>
+        </p>
+        <p class="display-prev">
+          <span class="big">previous</span>
+          <span class="small">previous</span>
+        </p>
+        <p class="display-next">
+          <span class="big">next</span>
+          <span class="small">next</span>
         </p>
         <!-- the order should be consistent with the order in projectList.js -->
         <img class="display-image" src="./img/thumbs/flask-compare-sm.jpg" alt="">
@@ -253,7 +272,8 @@
           <button class="project-btn project-btn-next" id="btn-prev"><i class="fas fa-chevron-left"></i></button>
           <button class="project-btn project-btn-prev"><i class="fas fa-chevron-right" id="btn-next"></i></button>
         </div>
-        <h3 class="project-title" id="project-title">flaskCompare</h3>
+        <h3 class="project-title" id="project-title"><span class="project-title-prompt">flaskCompare</span><span
+            class="project-title-cursor">|</span></h3>
         <p class="project-tech" id="project-tech">python / flask / javaScript / SASS / BEM</p>
         <div class="project-desc" id="project-desc">Yyy Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
           veniam
@@ -316,9 +336,15 @@
     <div class="footer-section">
       <h3 class="footer-title footer-title-social">Contact & social media</h3>
       <p class="footer-social-field">
-        <a href="" class="footer-social-link">
+        <a href="" class="footer-social-link disabled">
+          <span class="footer-social-icon"><i class="fas fa-map-marker-alt"></i></span>
+          <span class="footer-social-name">Warsaw, Poland</span>
+        </a>
+      </p>
+      <p class="footer-social-field">
+        <a href="" class="footer-social-link disabled">
           <span class="footer-social-icon"><i class="far fa-envelope"></i></span>
-          <span class="footer-social-name">lechkrzeminski@gmail.com</span>
+          <span class="footer-social-name email">lechkrzeminski@gmail.com</span>
         </a>
       </p>
       <p class="footer-social-field">
@@ -343,25 +369,25 @@
     <div class="footer-section footer-section-wide">
       <h3 class="footer-title footer-title-project">Project list</h3>
       <ul class="footer-project-list">
-        <li class="footer-project-item"><a href="" class="footer-project-link">Paper - Rock - Scissors</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">Jackpot</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">Ten questions (nodeQuiz)</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">Node Server</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">Star-Trek Crew</a></li>
+        <li class="footer-project-item"><a href="https://krzemgit.github.io/rock-paper-scissors/" class="footer-project-link" target="_blank">Rock-Paper-Scissors</a></li>
+        <li class="footer-project-item"><a href="https://krzemgit.github.io/jackpot/" class="footer-project-link" target="_blank">Jackpot</a></li>
+        <li class="footer-project-item"><a href="https://nodequest.krzem.dev/" class="footer-project-link" target="_blank">Ten questions (nodeQuest)</a></li>
+        <li class="footer-project-item"><a href="http://node-serv1.herokuapp.com/" class="footer-project-link" target="_blank">Node Server</a></li>
+        <li class="footer-project-item"><a href="https://star-trek-crew.herokuapp.com/" class="footer-project-link" target="_blank">Star-Trek Crew</a></li>
       </ul>
       <ul class="footer-project-list">
-        <li class="footer-project-item"><a href="" class="footer-project-link">infoPortal</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">weatherApp</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">cryptoNews</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">flaskCredit</a></li>
-        <li class="footer-project-item"><a href="" class="footer-project-link">flaskPresent</a></li>
+        <li class="footer-project-item"><a href="https://info-service.herokuapp.com/" class="footer-project-link" target="_blank">infoService</a></li>
+        <li class="footer-project-item"><a href="https://weatherapp.krzem.dev/" class="footer-project-link" target="_blank">weatherApp</a></li>
+        <li class="footer-project-item"><a href="https://bit-info-30y7d1biy.vercel.app/" class="footer-project-link" target="_blank">bitInfo</a></li>
+        <li class="footer-project-item"><a href="https://flaskcredit.krzem.dev/" class="footer-project-link" target="_blank">flaskCredit</a></li>
+        <li class="footer-project-item"><a href="https://flaskpresent.krzem.dev/" class="footer-project-link" target="_blank">flaskPresent</a></li>
       </ul>
       <ul class="footer-project-list">
-        <li class="footer-project-item"><a href="" class="footer-project-link">flaskCompare</a></li>
+        <li class="footer-project-item"><a href="https://flaskcompare.krzem.dev/" class="footer-project-link" target="_blank">flaskCompare</a></li>
         <li class="footer-project-item"> </li>
-        <li class="footer-project-item in-progress"><a href="" class="footer-project-link">RaszBoard</a></li>
-        <li class="footer-project-item in-progress"><a href="" class="footer-project-link">MorisWebSite</a></li>
-        <li class="footer-project-item in-progress"><a href="" class="footer-project-link">KrzePa foto</a></li>
+        <li class="footer-project-item in-progress"><a href="/inprogress" class="footer-project-link" target="_blank">RaszBoard</a></li>
+        <li class="footer-project-item in-progress"><a href="/inprogress" class="footer-project-link" target="_blank">MorisWebSite</a></li>
+        <li class="footer-project-item in-progress"><a href="/inprogress" class="footer-project-link" target="_blank">KrzePa foto</a></li>
       </ul>
     </div>
     <div class="footer-pic-wrapper">

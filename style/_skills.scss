@@ -1,5 +1,4 @@
-
-// skill section
+// skill section ,animations made with transitions, not keyframes
 $color-basic: orange;
 $color-good: #ffff00;
 $color-very-good: #00ff00;
@@ -116,8 +115,6 @@ $color-measure: #333;
   }
 }
 
-
-
 /**** single skill display *****/
 .skill {
   position: absolute;
@@ -182,10 +179,15 @@ $color-measure: #333;
 
   // standard content, before choosing a skill
   &-none {
+    margin-top: 10vh;
     font-size: 5rem;
 
     @include tablet-big {
       margin-top: 30vh;
+    }
+
+    @include tablet {
+      margin-top: 10vh;
     }
 
     @include mobile {
