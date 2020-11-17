@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
 
+@keyframes slide-left {
+  0% {transform: translateX(-20px); opacity: 0};
+  100% {transform: translateX(0px); opacity: 1};
+}
+
+@keyframes slide-right {
+  0% {transform: translateY(20px); opacity: 0};
+  100% {transform: translateY(0px); opacity: 1};
+}
+
 :root {
   --color-bg: #111;
   --color-text: #ddd;
@@ -51,6 +61,7 @@
   font-size: 12rem;
   color: var(--color-text-inactive);
   white-space: nowrap;
+  animation: slide-left 1s;
 }
 
 .wrapper .text .big.mock {
@@ -61,7 +72,9 @@
   position: relative;
   left: 80px;
   font-size: 4rem;
-  color: var(--color-text)
+  color: var(--color-text);
+  transform: translateY(0);
+  animation: slide-right 2s;
 }
 
 .wrapper .text .small.mock {
