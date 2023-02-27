@@ -1,6 +1,9 @@
 {
   "name": "portfolio-parcel",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.0.0^"
+  },
   "description": "My personal portfolio with bundler",
   "scripts": {
     "start": "parcel index.html",
