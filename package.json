@@ -2,18 +2,18 @@
   "name": "portfolio-parcel",
   "version": "1.0.0",
   "engines": {
-    "node": "^16.0.0"
+    "node": "^18.0.0"
   },
   "description": "My personal portfolio with bundler",
   "scripts": {
-    "start": "parcel index.html",
-    "prod": "parcel build index.html"
+    "start": "parcel src/**/*.html",
+    "prod": "parcel build src/**/*.html"
   },
   "author": "Krzem",
   "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "2.7.0",
-    "parcel": "^2.0.0",
-    "sass": "^1.28.0"
+    "@parcel/transformer-sass": "2.11.0",
+    "parcel": "^2.11.0",
+    "sass": "^1.69.7"
   }
 }

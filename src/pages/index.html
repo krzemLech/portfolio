@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krzem</title>
+  <link rel="shortcut icon" href="../img/new-logo.png" type="image/png">
+  <link rel="icon" href="../img/new-logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Oswald:wght@600;700&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style/style.scss">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <!-- <span class="logo-wrapper"><i class="fas fa-code"></i></span> -->
+      <img class="logo-pic" src="../img/new-logo.png" alt="">
+    </div>
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item active"><a href="#hero" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger">
+      <div class="hamburger-item"></div>
+      <div class="hamburger-item"></div>
+      <div class="hamburger-item"></div>
+    </div>
+  </header>
+  <section class="hero" id="hero">
+    <div class="hero-item title">
+      <div class="title-wrapper">
+        <h1>Lech Krzemiński</h1>
+        <p class="title-subtitle"><span id="prompt"></span><span id="cursor">|</span></p>
+        <p class="title-btns">
+          <a class="btn title-btn btn-white" href="#projects">Projects</a>
+          <a class="btn title-btn btn-black" href="#contact">Contact me</a>
+        </p>
+        <p class="title-icons">
+          <a href="https://www.linkedin.com/in/lech-krzemi%C5%84ski-6a91a155/" class="title-social-icon"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/krzemLech" class="title-social-icon"><i class="fab fa-github"></i></a>
+          <a href="https://www.facebook.com/lech.krzeminski" class="title-social-icon"><i
+              class="fab fa-facebook"></i></a>
+        </p>
+      </div>
+
+    </div>
+    <div class="hero-item photo">
+      <img class="photo-pic" src="../img/self-round.png" alt="my photo" height="100">
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="about-photo">
+    </div>
+    <div class="about-content" id="content">
+      <h2 class="about-title">About me</h2>
+      <div class="about-text">
+        <p class="about-paragraph">I am a full-stack developer, focused on the front-end, but with an extensive Node.js experience and also a huge
+          Python enthusiast. My favourite frameworks by far are: React at the front and Express at the backend, although recently I was captivated by <a href="https://astro.build" class="primary" target="_blank">Astro.js</a> and <a href="https://hono.dev" class="primary" target="_blank">Hono</a>. My
+          experience accounts for almost 4 years in enterprise. During this time I managed to create several applications, including storehouse management interface, financial apps and even a virtual machine rental application. I developed both front-end and back-end for these projects, depending on where my help was needed most. I feel comfortable with switching my development focus, as I practiced that a lot in my recent projects. Currently I am wroking for <a href="https://www.codete.com" class="about-codete-link" target="_blank">Codete</a>. </p>
+        <p class="about-paragraph">My interests include programming, which I have been improving for the past 6 years,
+          initially as a hobby and now as my day-time job. Work aside, I am also interested in calisthenics,
+          cycling,
+          startegic / table-top games and history. As an alumni of American Studies (i.a.) I speak fluent English and have quite an extensive experience in management, including a position of the Deputy Headmaster of a high school.</p>
+      </div>
+      <div class="about-coop">
+        <h3 class="about-coop-title">Let's cooperate</h3>
+        <p class="about-coop-text">If you would like to cooperate with me, please use a contact form below or see
+          contact details in the footer. See U around!</p>
+        <a class="about-coop-link contact-link" href="#contact" target="_blank">contact me &rArr;</a>
+      </div>
+    </div>
+  </section>
+  <section class="skills" id="skills">
+    <div class="skills-desc">
+      <h2 class="skills-title">Skills</h2>
+      <p class="skills-text">Throughout 4 years of learning and working I aquired skills that allow me to complete the whole
+        project,
+        from design to deployment. I have my own could server where I store (and dockerize) my favorite designs. Click
+        below to see the list of skills or move on to the next section to see my works. </p>
+      <ul class="skills-menu">
+        <li class="skills-menu-item" data-skill-no="1">Design</li>
+        <li class="skills-menu-item" data-skill-no="2">Front-end</li>
+        <li class="skills-menu-item" data-skill-no="3">Back-end</li>
+        <li class="skills-menu-item" data-skill-no="4">DevOps</li>
+      </ul>
+    </div>
+    <div class="skills-display">
+      <div class="measure">
+        <p class="measure-unit"><span class="measure-level">Basic</span></p>
+        <p class="measure-unit"><span class="measure-level">Good</span></p>
+        <p class="measure-unit"><span class="measure-level">Badass</span></p>
+        <p class="measure-unit"><span class="measure-level">Rockstar</span></p>
+      </div>
+      <div class="skill skill-none active">
+        <p class="text"><span class="text-bg">Choose</span> <span class="text-front">skills</span></p>
+      </div>
+      <div class="skill skills-design">
+        <div class="skill-one basic new-stack">
+          <p class="skill-name">Figma</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="skill skills-front">
+        <div class="skill-one very-good new-stack">
+          <p class="skill-name">HTML</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">CSS</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">Javascript</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Typescript</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one amazing">
+          <p class="skill-name">React.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">Next.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Vue.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Svelte.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">SASS</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">BEM</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Tailwind CSS</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Vite</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Parcel</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+      <div class="skill skills-back">
+        <div class="skill-one new-stack very-good">
+          <p class="skill-name">Python</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Flask</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Django</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">FastAPI</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one new-stack amazing">
+          <p class="skill-name">Node.js</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one very-good">
+          <p class="skill-name">Express</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Koa</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Meteor</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">MongoDB</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+      <div class="skill skills-deploy">
+        <div class="skill-one basic new-stack">
+          <p class="skill-name">Docker</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">Nginx</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one good">
+          <p class="skill-name">Linux</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+        <div class="skill-one basic">
+          <p class="skill-name">AWS</p>
+          <p class="skill-bar"><span class="skill-progress"></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="projects" id="projects">
+    <div class="projects-section projects-section-left">
+      <h2 class="projects-title">Projects</h2>
+      <div class="projects-intro">I have worked on 10 comercial and numerous hobby projects so far, used various technologies, spanning from the front-end to DevOps. Some of these projects are described in this section, some of them have their own design layout prepared in figma. Hover
+        over the
+        photographs to find links to the apps,
+        to
+        design projects and to the source code on GitHub.</div>
+
+      <div class="display" id="image-wrapper">
+        <p class="display-links links">
+          <a class="display-icon-wrapper" id="project-link" href="#" target="_blank"><i
+              class="fas fa-link project-icon"></i></a>
+          <a class="display-icon-wrapper" id="project-code" href="#" target="_blank"><i
+              class="fab fa-github-alt project-icon"></i></a>
+          <a class="display-icon-wrapper" id="project-design" href="#" target="_blank"><i
+              class="fas fa-palette project-icon"></i></a>
+        </p>
+        <p class="display-prev">
+          <span class="big">previous</span>
+          <span class="small">previous</span>
+        </p>
+        <p class="display-next">
+          <span class="big">next</span>
+          <span class="small">next</span>
+        </p>
+        <!-- the order should be consistent with the order in projectList.js -->
+        <img class="display-image" src="../img/thumbs/flask-present.jpg" alt="flask-present-app">
+        <img class="display-image hidden" src="../img/thumbs/pomodoro-board-lg.png" alt="pomodoro-board-app">
+        <img class="display-image hidden" src="../img/thumbs/ninja-music.png" alt="ninja-music-app">
+        <img class="display-image hidden" src="../img/thumbs/bit-info-sm.jpg" alt="bit-info-app">
+        <img class="display-image hidden" src="../img/thumbs/weather-app.jpg" alt="weather-react-app">
+        <img class="display-image hidden" src="../img/thumbs/info-servis-sm.jpg" alt="info-servis-app">
+      </div>
+    </div>
+    <div class="projects-section projects-section-right">
+      <div class="project">
+        <div class="project-btns">
+          <button class="project-btn project-btn-next" id="btn-prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="project-btn project-btn-prev" id="btn-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <h3 class="project-title" id="project-title"><span class="project-title-prompt">flaskCompare</span><span
+            class="project-title-cursor">|</span></h3>
+        <p class="project-tech" id="project-tech">Python / Flask / JavaScript / SASS / BEM</p>
+        <div class="project-desc" id="project-desc">Yyy Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
+          veniam
+          odit
+          pariatur, adipisci ut reprehenderit ipsam labore provident odio excepturi corporis quam quos fugit aperiam
+          maiores velit officiis dolorum officia. Voluptatibus officia vero, assumenda reprehenderit perferendis odit
+          asperiores ea dolore velit natus dignissimos eligendi, magni quas quidem recusandae ipsum incidunt consectetur
+          amet, minus quibusdam at!
+        </div>
+        <div class="project-desc-tech" id="project-tech-desc">EEE Lorem ipsum dolor sit amet consectetur adipisicing
+          elit.
+          Saepe, veniam odit
+          pariatur, adipisci ut reprehenderit ipsam labore provident odio excepturi corporis quam quos fugit aperiam
+          maiores velit officiis dolorum officia. Voluptatibus officia vero, assumenda reprehenderit perferendis odit
+          asperiores ea dolore velit natus dignissimos eligendi, magni quas quidem recusandae ipsum incidunt consectetur
+          amet, minus quibusdam at!
+        </div>
+        <div class="project-scroll">
+          <span class="project-no-prev" id="scroll-prev">00</span>
+          <p class="project-scroller">
+            <span class="project-suffix" id="scroll-suffix"></span>
+          </p>
+          <span class="project-no-next" id="scroll-next">02</span>
+        </div>
+      </div>
+      <a class="project-link-all contact-link" href="#footer">project list &rArr;</a>
+    </div>
+
+  </section>
+  <section class="contact" id="contact">
+    <h2 class="contact-title">Contact Me</h2>
+    <p class="contact-subtitle">Say <span class="contact-hi">Hi!</span> or contact me via the social media.</p>
+    <form action="" method="POST" class="contact-form form" data-static-form-name="contact" id="form">
+      <p class="form-feedback" id="feedback">feedback</p>
+      <fieldset class="form-field form-field-half">
+        <label class="form-label" for="name">Your Name:</label>
+        <input class="form-input" type="text" name="name" id="name">
+      </fieldset>
+      <fieldset class="form-field form-field-half">
+        <label class="form-label" for="email">Your E-mail:</label>
+        <input class="form-input" type="email" name="email" id="email">
+      </fieldset>
+      <fieldset class="form-field">
+        <label class="form-label" for="subject">Message Subject:</label>
+        <input class="form-input" type="text" name="subject" id="subject">
+      </fieldset>
+      <fieldset class="form-field form-field-message">
+        <label class="form-label" for="message">Your Message...</label>
+        <textarea class="form-input form-input-area" type="text" name="message" id="message">
+      </fieldset>
+      <fieldset class="form-field form-field-btn">
+        <span class="form-btn-wrapper" id="submit-wrapper">
+          <input class="form-btn" type="submit" value="Send!" id="submit-btn" disabled>
+        </span>
+      </fieldset>
+    </form>
+  </section>
+  <footer id="footer" class="footer">
+    <div class="footer-container container">
+
+      <div class="footer-section"><p class="footer-logo">Lech<span class="bold">Krzemiński</span><span class="copy">&copy</span></p></div>
+      <div class="footer-section">
+        <h3 class="footer-title footer-title-social">Contact & social media</h3>
+        <p class="footer-social-field">
+          <a href="" class="footer-social-link disabled">
+            <span class="footer-social-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="footer-social-name">Krakow, Poland</span>
+          </a>
+        </p>
+        <p class="footer-social-field">
+          <a href="" class="footer-social-link disabled">
+            <span class="footer-social-icon"><i class="far fa-envelope"></i></span>
+            <span class="footer-social-name email">lechkrzeminski@gmail.com</span>
+          </a>
+        </p>
+        <p class="footer-social-field">
+          <a href="" class="footer-social-link">
+            <span class="footer-social-icon"><i class="fab fa-linkedin"></i></span>
+            <span class="footer-social-name">LinkedIn</span>
+          </a>
+        </p>
+        <p class="footer-social-field">
+          <a href="" class="footer-social-link">
+            <span class="footer-social-icon"><i class="fab fa-facebook"></i></span>
+            <span class="footer-social-name">Facebook</span>
+          </a>
+        </p>
+        <p class="footer-social-field">
+          <a href="" class="footer-social-link">
+            <span class="footer-social-icon"><i class="fab fa-github"></i></span>
+            <span class="footer-social-name">Github</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-section footer-section">
+        <h3 class="footer-title footer-title-project">Project list</h3>
+        <ul class="footer-project-list">
+          <li class="footer-project-item"><a href="https://flask-present-production.up.railway.app/" class="footer-project-link" target="_blank">flaskPresent</a></li>
+          <li class="footer-project-item"><a href="https://finstinct-admin-development.up.railway.app/" class="footer-project-link" target="_blank">Svelte Pomodoro Board</a></li>
+          <li class="footer-project-item"><a href="https://musoninjas.web.app" class="footer-project-link" target="_blank">Ninja Music List</a></li>
+          <!-- Ninja music -->
+          <!-- Svelte admin -->
+        </ul>
+        <ul class="footer-project-list">
+          <li class="footer-project-item"><a href="https://bit-info-30y7d1biy.vercel.app/" class="footer-project-link" target="_blank">bitInfo</a></li>
+          <li class="footer-project-item"><a href="https://weatherapp.krzem.dev/" class="footer-project-link" target="_blank">weatherApp</a></li>
+          <li class="footer-project-item"><a href="https://infoservice-production.up.railway.app" class="footer-project-link" target="_blank">infoService</a></li>
+        </ul>
+      </div>
+      <div class="footer-pic-wrapper">
+        <img src="../img/new-logo.png" alt="" class="footer-pic">
+      </div>
+    </div>
+    </footer>
+    <script src="../js/index.js" type="module"></script>
+  </body>
+  
+  </html>

@@ -1,0 +1,461 @@
+/* project section, most complex of all
+* it has all the keyframe animations 
+* the rest is divided into three elements: (1) title + intro, (2) project thumbnail and (3) project description
+*/
+
+@keyframes slide {
+  0% {
+    left: 100%;
+    right: -50%;
+  }
+  50% {
+    left: 0;
+    right: 0;
+  }
+  100% {
+    right: 100%;
+    left: -50%;
+  }
+}
+
+@keyframes slide-back {
+  0% {
+    right: 100%;
+    left: -50%;
+  }
+  50% {
+    right: 0;
+    left: 0;
+  }
+  100% {
+    left: 100%;
+    right: -50%;
+  }
+}
+
+@keyframes blink {
+  1% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes back-move {
+  0% {
+    left: 70%;
+  }
+  100% {
+    left: 10%;
+  }
+}
+
+$animation-length: 0.6s;
+$slide-length: $animation-length * 2;
+
+.projects {
+  display: flex;
+
+  min-height: 95vh;
+  padding-top: 100px;
+
+  @include tablet-big {
+    min-height: 70vh;
+  }
+
+  @include tablet {
+    min-height: 70vh;
+  }
+
+  @include tablet-small {
+    position: relative;
+    flex-direction: column;
+  }
+
+  &-section {
+    position: relative;
+    flex-basis: 50%;
+
+    @include tablet-small {
+      padding: 0;
+      flex-basis: auto;
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-right: 15px;
+
+      @include tablet-big {
+        flex-basis: 40%;
+      }
+
+      @include tablet {
+        flex-basis: 40%;
+      }
+
+      @include tablet-small {
+        padding: 0;
+      }
+    }
+
+    &-right {
+      padding: 100px 0 30px 15px;
+
+      @include tablet-big {
+        padding-top: 0;
+        font-size: 1.2rem;
+        flex-basis: 60%;
+      }
+
+      @include tablet {
+        padding-top: 0;
+        font-size: 1.2rem;
+        flex-basis: 60%;
+      }
+
+      @include tablet-small {
+        padding: 0;
+        position: static;
+      }
+    }
+  }
+
+  &-title {
+    height: 100px;
+
+    @include tablet-small {
+      height: 80px;
+    }
+  }
+
+  &-intro {
+    margin-bottom: 20px;
+  }
+}
+
+.display {
+  position: relative;
+  overflow: hidden;
+  padding-top: 75%;
+  box-shadow: 5px 5px 10px #000;
+  margin-top: 0;
+  width: 100%;
+
+  align-self: flex-end;
+
+  &-prev,
+  &-next {
+    position: absolute;
+    background-color: #222;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 100%;
+    z-index: 4;
+    font-size: 4rem;
+    color: #555;
+    text-align: center;
+    padding-top: calc(38% - 4rem);
+    overflow: hidden;
+
+    .big {
+      position: absolute;
+      top: 33%;
+      left: 70%;
+      font-size: 7rem;
+      color: #333;
+    }
+  }
+
+  &.slide-next {
+    .display-next {
+      animation: linear slide $slide-length;
+
+      .big {
+        animation: linear back-move $slide-length;
+      }
+    }
+  }
+
+  &.slide-prev {
+    .display-prev {
+      animation: linear slide-back $slide-length;
+
+      .big {
+        animation: linear back-move $slide-length reverse;
+      }
+    }
+  }
+
+  &-links {
+    height: 100%;
+    overflow: hidden;
+    background-color: #4cf3ff70;
+    width: 100%;
+
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    z-index: 3;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    transition: bottom 1s;
+  }
+
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    // transition: transform .6s;
+    opacity: 1;
+  }
+
+  &:hover .links {
+    height: 100%;
+    bottom: 0;
+  }
+
+  &-icon {
+    &-wrapper {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      line-height: 46px;
+      border-radius: 50%;
+      border: 3px solid #000;
+      color: #000;
+
+      &:hover {
+        color: #fff;
+        border-color: #fff;
+      }
+    }
+  }
+}
+
+.project {
+  position: relative;
+
+  padding: 20px 40px;
+  min-height: 55vh;
+
+  box-shadow: $shadow;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 60%;
+
+  @include tablet {
+    padding: 10px 30px;
+  }
+
+  @include tablet-small {
+    flex-basis: 100%;
+    margin: 20px 0 0;
+  }
+
+  &-btns {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &-btn {
+    color: $color-text;
+    background-color: $color-bg;
+    width: 50px;
+    height: 50px;
+    margin: 20px 20px 20px 0;
+
+    border-radius: 50%;
+    border: 3px solid $color-text;
+
+    font-size: 2rem;
+    line-height: 44px;
+    cursor: pointer;
+    outline: none;
+
+    @include tablet {
+      width: 40px;
+      height: 40px;
+      line-height: 36px;
+      font-size: 1.5rem;
+      margin: 10px 10px 10px 0;
+    }
+
+    &:first-child {
+      padding-right: 3px;
+    }
+
+    &:last-child {
+      padding-left: 3px;
+    }
+
+    &:hover {
+      color: $color-select;
+      border-color: $color-select;
+    }
+  }
+
+  &-title {
+    flex-basis: 100%;
+    font-size: 2.5rem;
+    padding: 20px 0 0;
+    opacity: 1;
+    transition: 0.3s all;
+    word-wrap: break-word;
+
+    @include tablet-small {
+      padding-top: 40px;
+    }
+
+    &-cursor {
+      display: inline;
+      position: relative;
+      bottom: 3px;
+      margin-left: 1px;
+      animation: blink 1s infinite;
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+
+  &-tech {
+    flex-basis: 100%;
+    margin: 10px 0;
+    font-style: italic;
+    color: #888;
+    transition: $animation-length all;
+
+    @include tablet {
+      margin-bottom: 30px;
+    }
+
+    @include tablet-small {
+      margin-bottom: 10px;
+    }
+  }
+
+  &-desc {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: $animation-length all 0.2s;
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+
+    @include mobile {
+      font-size: 1.3rem;
+    }
+
+    &-tech {
+      flex-basis: 75%;
+      transition: $animation-length all 0.2s;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &-scroll {
+    display: flex;
+    margin: 10px 0;
+    flex-basis: 100%;
+    align-items: center;
+
+    @include tablet-small {
+      margin-right: 15px;
+      margin-right: auto;
+      padding-top: 10px;
+    }
+  }
+
+  &-scroller {
+    position: relative;
+    height: 4px;
+    background-color: #888;
+    border-radius: 2px;
+    flex-grow: 1;
+    margin: 0 20px;
+  }
+
+  &-suffix {
+    position: absolute;
+    bottom: -1px;
+    left: calc(
+      0 * (90% / 11)
+    ); // 1st num - project no, 2nd is 100% minu suffix length, 3rd - number of all projects
+    width: 10%;
+    height: 6px;
+    background-color: #111;
+    border-radius: 3px;
+    border: 1px solid #888;
+    transition: left 0.5s;
+  }
+
+  &-link {
+    &-all {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      @include tablet-small {
+        top: 110px;
+        right: 10%;
+        bottom: auto;
+      }
+    }
+  }
+
+  &-icon {
+    &-wrapper {
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      line-height: 46px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      color: #fff;
+
+      &:hover {
+        color: $color-bg;
+        border-color: $color-bg;
+      }
+    }
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateX(20px);
+}

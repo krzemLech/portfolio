@@ -1,0 +1,52 @@
+/* variables and mixins only
+*  animations are defined in a specific section - projects.scss (used only there)
+*/
+
+$color-primary-dark: #006066;
+$color-primary: #4cf3ff;
+$color-primary-light: #a3f9ff;
+
+$color-bg: #111;
+$color-text: #ddd;
+$color-text-inactive: #aaa;
+$color-red: rgba(221, 19, 19);
+$color-select: $color-primary;
+
+$font-title: "Oswald", sans-serif;
+$font-subtitle: "Montserrat", sans-serif;
+$font-text: "Poppins", sans-serif;
+$font-menu: "Kanit", sans-serif;
+
+$shadow: 6px 6px 6px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 0, 0, 0.5),
+  0 0 45px rgba(0, 0, 0, 0.2);
+
+@mixin tablet-big {
+  // for iPad pro mainly
+  @media (min-width: 1021px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1020px) {
+    @content;
+  }
+}
+
+@mixin tablet-small {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 512px) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
