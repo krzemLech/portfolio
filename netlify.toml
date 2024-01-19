@@ -6,4 +6,4 @@ to = "/index.html"
 from = "/api/msg"
 to = "https://portfolio-server-production-0dd6.up.railway.app/messages"
 force = true
-headers = {x-portfolio-id = PORTFOLIO_ID}
+headers = {x-portfolio-id = "PORTFOLIO_ID"}
