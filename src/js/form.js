@@ -17,9 +17,15 @@ class Form {
     this.formValid = null;
     this.emailPattern = /\S+@\S+\.\S+/;
 
-    this.btn.addEventListener("click", (e) => {
+    this.form.addEventListener("submit", async (e) => {
       e.preventDefault();
       this.sendMessage();
+    });
+
+    this.btn.addEventListener("mouseenter", (e) => {
+      // e.preventDefault();
+      // this.sendMessage();
+      this.validateAll();
     });
     this.btnWrapper.addEventListener("mouseenter", (e) => {
       if (this.btnWrapper.childNodes[1].disabled) {
@@ -49,6 +55,16 @@ class Form {
       });
     });
   }
+  sendData = async () => {
+    const data = new FormData(this.form);
+    const message = Object.fromEntries(data.entries());
+    console.log("sending:", JSON.stringify(message));
+    const response = await fetch("/api/msg", {
+      method: "POST",
+      body: JSON.stringify(message),
+    });
+    console.log("response:", response.ok);
+  };
   validateName = () => {
     if (this.name.value.trim().length > 3) return (this.nameValid = true);
     return (this.nameValid = false);
@@ -129,14 +145,14 @@ class Form {
       input.value = "";
     });
   };
-  sendMessage = () => {
+  sendMessage = async () => {
     if (this.formValid) {
       try {
-        this.form.submit();
-        this.giveFeedback("message sent", "green");
-        this.clearInputs();
         this.validateAll();
         this.manageClasses();
+        await this.sendData();
+        this.giveFeedback("message sent", "green");
+        this.form.reset();
       } catch (err) {
         console.error(err);
         this.giveFeedback("error when sending form", "red");
