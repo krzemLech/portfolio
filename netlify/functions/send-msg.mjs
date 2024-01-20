@@ -41,6 +41,7 @@ export default async (req, context) => {
   const response = JSON.stringify({
     msg: "Hello, world!",
     var: testVar,
+    body: data,
   });
   return new Response(response);
 };
