@@ -1,39 +1,20 @@
 import nodemailer from "nodemailer";
-import { createClient } from "redis";
-
-const redisConnect = () => {
-  const client = createClient();
-  client.on("error", (err) => console.log("Redis Client Error", err));
-  return client.connect();
-};
-
-const addToday = async (client, count) => {
-  const now = new Date().toISOString().slice(0, 10);
-  const num = count + 1;
-  await client.set(now, num);
-  return num;
-};
-
-const checkToday = async (client) => {
-  const now = new Date().toISOString().slice(0, 10);
-  const today = await client.get(now);
-  // will work, cuz for 0 today = "0"
-  return today ? +today : 0;
-};
 
 export default async (req, context) => {
   const email = Netlify.env.get("EMAIL");
   const pass = Netlify.env.get("PASS");
-  const redisUrl = Netlify.env.get("REDIS_URL");
-  const redisPass = Netlify.env.get("REDIS_PASS");
-  const maxCount = Netlify.env.get("MAX_COUNT") || 20;
+  const checkUrl = Netlify.env.get("CHECK_URL");
   const data = await req.json();
   let error = null;
 
   // gate checks for ENVs and body data
-  if (!email || !pass || !redisUrl || !redisPass || !maxCount) {
+  if (!email || !pass || !checkUrl) {
     return new Response("Missing credentials", { status: 500 });
   }
+
+  const canSend = await fetch(checkUrl).then((res) => res.json());
+
+  return new Response(JSON.stringify(canSend));
 
   if (!data || !data.name || !data.email || !data.subject || !data.message) {
     return new Response("Missing form fields", { status: 400 });
@@ -68,12 +49,10 @@ export default async (req, context) => {
       html,
     });
   }
-  await main()
-    .then(() => addToday(client, count))
-    .catch((err) => {
-      console.error(err);
-      error = err;
-    });
+  await main().catch((err) => {
+    console.error(err);
+    error = err;
+  });
   if (error) return new Response(err, { status: 500 });
   const response = JSON.stringify({
     msg: "Message sent",
