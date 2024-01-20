@@ -4,21 +4,20 @@ import { createClient } from "redis";
 const redisConnect = async () => {
   const client = createClient();
   client.on("error", (err) => console.log("Redis Client Error", err));
-  await client.connect();
+  return await client.connect();
 };
 
-const addToday = async () => {
-  const client = await redisConnect();
+const addToday = async (client, count) => {
   const now = new Date().toISOString().slice(0, 10);
-  const num = await client.get(now);
-  await client.set(now, num ? +num + 1 : 0);
-  return num ? num + 1 : 0;
+  const num = count + 1;
+  await client.set(now, num);
+  return num;
 };
 
-const checkToday = async () => {
-  const client = await redisConnect();
+const checkToday = async (client) => {
   const now = new Date().toISOString().slice(0, 10);
   const today = await client.get(now);
+  // will work, cuz for 0 today = "0"
   return today ? +today : 0;
 };
 
@@ -39,8 +38,10 @@ export default async (req, context) => {
   if (!data || !data.name || !data.email || !data.subject || !data.message) {
     return new Response("Missing form fields", { status: 400 });
   }
+  const client = redisConnect();
+  const count = await checkToday(client);
   // check messages count for today
-  if (checkToday() > +maxCount) {
+  if (count > +maxCount) {
     return new Response("Too many messages", { status: 503 });
   }
 
@@ -71,7 +72,7 @@ export default async (req, context) => {
     console.error(err);
     error = err;
   });
-  const currentCount = await addToday();
+  const currentCount = await addToday(client, count);
   if (error) return new Response(err, { status: 500 });
   const response = JSON.stringify({
     msg: "Message sent",
