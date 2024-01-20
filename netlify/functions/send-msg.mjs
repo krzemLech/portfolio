@@ -1,47 +1,43 @@
 import nodemailer from "nodemailer";
 
 export default async (req, context) => {
-  /* 
+  const email = Netlify.env.get("EMAIL");
+  const pass = Netlify.env.get("PASS");
+  const data = await req.json();
+
+  if (!email || !pass) {
+    return new Response("Missing credentials", { status: 500 });
+  }
+
+  if (!data || !data.name || !data.email || !data.subject || !data.message) {
+    return new Response("Missing form fields", { status: 400 });
+  }
+
+  const text = `from: ${data.name} \n email: ${data.email} \n subject: ${data.subject} \n message: ${data.message}`;
+  const html = `<p>from: ${data.name}</p> <p>email: ${data.email}</p> <p>subject: ${data.subject}</p> <p>message: ${data.message}</p>`;
+
   const transporter = nodemailer.createTransport({
     host: "smtpout.secureserver.net",
     port: 465,
     secure: true,
     secureConnection: false,
-    auth: {
-      // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-      user: "REPLACE-WITH-YOUR-ALIAS@YOURDOMAIN.COM",
-      pass: "REPLACE-WITH-YOUR-GENERATED-PASSWORD",
-    },
+    auth: { user: email, pass },
   });
 
-  // async..await is not allowed in global scope, must use a wrapper
   async function main() {
-    // send mail with defined transport object
     const info = await transporter.sendMail({
-      from: '"Fred Foo 👻" <foo@example.com>', // sender address
-      to: "bar@example.com, baz@example.com", // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
-      html: "<b>Hello world?</b>", // html body
+      from: email,
+      to: email,
+      subject: "Message from portfolio",
+      text,
+      html,
     });
-
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-    //
-    // NOTE: You can go to https://forwardemail.net/my-account/emails to see your email delivery status and preview
-    //       Or you can use the "preview-email" npm package to preview emails locally in browsers and iOS Simulator
-    //       <https://github.com/forwardemail/preview-email>
-    //
   }
-  main().catch(console.error);*/
-  const data = await req.json();
-  console.log("data:", data);
-  const testVar = Netlify.env.get("TEST");
+  await main().catch(console.error);
   const response = JSON.stringify({
-    msg: "Hello, world!",
-    var: testVar,
-    body: data,
+    msg: "Message sent",
+    url: `https://forwardemail.net/my-account/emails`,
+    messageId: info.messageId || "no id",
   });
   return new Response(response);
 };
