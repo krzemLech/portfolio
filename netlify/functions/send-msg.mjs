@@ -29,6 +29,7 @@ export default async (req, context) => {
   const redisPass = Netlify.env.get("REDIS_PASS");
   const maxCount = Netlify.env.get("MAX_COUNT") || 20;
   const data = await req.json();
+  let error = null;
 
   // gate checks for ENVs and body data
   if (!email || !pass || !redisUrl || !redisPass || !maxCount) {
@@ -66,11 +67,11 @@ export default async (req, context) => {
       html,
     });
   }
-  await main().catch(
-    (err) => console.error(err),
-    new Response(err, { status: 500 })
-  );
+  await main().catch((err) => {
+    console.error(err), (error = err);
+  });
   const currentCount = await addToday();
+  if (error) return new Response(err, { status: 500 });
   const response = JSON.stringify({
     msg: "Message sent",
     url: `https://forwardemail.net/my-account/emails`,
