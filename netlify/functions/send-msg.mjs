@@ -68,7 +68,8 @@ export default async (req, context) => {
     });
   }
   await main().catch((err) => {
-    console.error(err), (error = err);
+    console.error(err);
+    error = err;
   });
   const currentCount = await addToday();
   if (error) return new Response(err, { status: 500 });
