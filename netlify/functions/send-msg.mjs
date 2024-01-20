@@ -4,6 +4,7 @@ export default async (req, context) => {
   const email = Netlify.env.get("EMAIL");
   const pass = Netlify.env.get("PASS");
   const checkUrl = Netlify.env.get("CHECK_URL");
+  const appId = Netlify.env.get("APP_ID");
   const data = await req.json();
   let error = null;
 
@@ -12,7 +13,9 @@ export default async (req, context) => {
     return new Response("Missing credentials", { status: 500 });
   }
 
-  const canSend = await fetch(checkUrl).then((res) => res.json());
+  const canSend = await fetch(checkUrl).then((res) => res.json(), {
+    headers: { "x-app-id": appId },
+  });
 
   return new Response(JSON.stringify(canSend));
 
