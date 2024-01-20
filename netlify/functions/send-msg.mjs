@@ -68,17 +68,18 @@ export default async (req, context) => {
       html,
     });
   }
-  await main().catch((err) => {
-    console.error(err);
-    error = err;
-  });
-  const currentCount = await addToday(client, count);
+  await main()
+    .then(() => addToday(client, count))
+    .catch((err) => {
+      console.error(err);
+      error = err;
+    });
   if (error) return new Response(err, { status: 500 });
   const response = JSON.stringify({
     msg: "Message sent",
     url: `https://forwardemail.net/my-account/emails`,
     messageId: info.messageId || "no id",
-    count: currentCount,
+    count,
   });
   return new Response(response);
 };
