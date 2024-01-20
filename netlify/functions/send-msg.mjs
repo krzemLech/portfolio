@@ -1,10 +1,10 @@
 import nodemailer from "nodemailer";
 import { createClient } from "redis";
 
-const redisConnect = async () => {
+const redisConnect = () => {
   const client = createClient();
   client.on("error", (err) => console.log("Redis Client Error", err));
-  return await client.connect();
+  return client.connect();
 };
 
 const addToday = async (client, count) => {
@@ -38,7 +38,7 @@ export default async (req, context) => {
   if (!data || !data.name || !data.email || !data.subject || !data.message) {
     return new Response("Missing form fields", { status: 400 });
   }
-  const client = redisConnect();
+  const client = await redisConnect();
   const count = await checkToday(client);
   // check messages count for today
   if (count > +maxCount) {
