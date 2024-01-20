@@ -35,7 +35,7 @@ export default async (req, context) => {
     //
   }
   main().catch(console.error);*/
-  const data = JSON.parse(req.body);
+  const data = req.body;
   console.log("data:", data);
   console.log(Netlify.env.get("TEST"));
   const response = JSON.stringify({
