@@ -15,5 +15,8 @@
     "@parcel/transformer-sass": "2.11.0",
     "parcel": "^2.11.0",
     "sass": "^1.69.7"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.8"
   }
 }
