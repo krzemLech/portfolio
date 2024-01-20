@@ -59,7 +59,7 @@ class Form {
     const data = new FormData(this.form);
     const message = Object.fromEntries(data.entries());
     console.log("sending:", JSON.stringify(message));
-    const response = await fetch("/api/msg", {
+    const response = await fetch("/.netlify/functions/send-msg", {
       method: "POST",
       body: JSON.stringify(message),
     });
