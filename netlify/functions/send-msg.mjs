@@ -5,21 +5,21 @@ const redisConnect = async () => {
   const client = createClient();
   client.on("error", (err) => console.log("Redis Client Error", err));
   await client.connect();
+};
 
-  const addToday = async () => {
-    const now = new Date().toISOString().slice(0, 10);
-    const num = await client.get(now);
-    await client.set(now, num ? +num + 1 : 0);
-    return num ? num + 1 : 0;
-  };
+const addToday = async () => {
+  const client = await redisConnect();
+  const now = new Date().toISOString().slice(0, 10);
+  const num = await client.get(now);
+  await client.set(now, num ? +num + 1 : 0);
+  return num ? num + 1 : 0;
+};
 
-  const checkToday = async () => {
-    const now = new Date().toISOString().slice(0, 10);
-    const today = await client.get(now);
-    return today ? +today : 0;
-  };
-
-  return { addToday, checkToday };
+const checkToday = async () => {
+  const client = await redisConnect();
+  const now = new Date().toISOString().slice(0, 10);
+  const today = await client.get(now);
+  return today ? +today : 0;
 };
 
 export default async (req, context) => {
@@ -39,8 +39,6 @@ export default async (req, context) => {
     return new Response("Missing form fields", { status: 400 });
   }
   // check messages count for today
-  const { addToday, checkToday } = await redisConnect();
-
   if (checkToday() > +maxCount) {
     return new Response("Too many messages", { status: 503 });
   }
@@ -68,8 +66,11 @@ export default async (req, context) => {
       html,
     });
   }
-  await main().catch(console.error);
-  const currentCount = addToday();
+  await main().catch(
+    (err) => console.error(err),
+    new Response(err, { status: 500 })
+  );
+  const currentCount = await addToday();
   const response = JSON.stringify({
     msg: "Message sent",
     url: `https://forwardemail.net/my-account/emails`,
