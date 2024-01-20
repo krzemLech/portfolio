@@ -37,10 +37,10 @@ export default async (req, context) => {
   main().catch(console.error);*/
   const data = req.body;
   console.log("data:", data);
-  console.log(Netlify.env.get("TEST"));
+  const testVar = Netlify.env.get("TEST");
   const response = JSON.stringify({
     msg: "Hello, world!",
-    var: "test different options",
+    var: testVar,
   });
   return new Response(response);
 };
