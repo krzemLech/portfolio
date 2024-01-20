@@ -41,7 +41,7 @@ export default async (req, context) => {
   // check messages count for today
   const { addToday, checkToday } = await redisConnect();
 
-  if (checkToday() > maxCount) {
+  if (checkToday() > +maxCount) {
     new Response("Too many messages", { status: 503 });
   }
 
