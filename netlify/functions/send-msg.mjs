@@ -13,6 +13,8 @@ export default async (req, context) => {
     return new Response("Missing form fields", { status: 400 });
   }
 
+  let info = {};
+
   const text = `from: ${data.name} \n email: ${data.email} \n subject: ${data.subject} \n message: ${data.message}`;
   const html = `<p>from: ${data.name}</p> <p>email: ${data.email}</p> <p>subject: ${data.subject}</p> <p>message: ${data.message}</p>`;
 
@@ -25,7 +27,7 @@ export default async (req, context) => {
   });
 
   async function main() {
-    const info = await transporter.sendMail({
+    info = await transporter.sendMail({
       from: email,
       to: email,
       subject: "Message from portfolio",
