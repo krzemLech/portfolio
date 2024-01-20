@@ -42,7 +42,7 @@ export default async (req, context) => {
   const { addToday, checkToday } = await redisConnect();
 
   if (checkToday() > +maxCount) {
-    new Response("Too many messages", { status: 503 });
+    return new Response("Too many messages", { status: 503 });
   }
 
   // email
