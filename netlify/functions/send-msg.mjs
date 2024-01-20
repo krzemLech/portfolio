@@ -17,7 +17,7 @@ export default async (req, context) => {
     headers: { "x-app-id": appId },
   });
 
-  return new Response(JSON.stringify(canSend));
+  return new Response(JSON.stringify({ ...canSend, "x-app-id": appId }));
 
   if (!data || !data.name || !data.email || !data.subject || !data.message) {
     return new Response("Missing form fields", { status: 400 });
