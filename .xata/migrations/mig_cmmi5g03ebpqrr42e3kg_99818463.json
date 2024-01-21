@@ -1,0 +1,16 @@
+{
+  "id": "mig_cmmi5g03ebpqrr42e3kg",
+  "parentID": "mig_cmmi5ah3cpe9ac2qtjd0",
+  "checksum": "1:998184633769b59f7d7258b02b84086a08b580e23ae78bf44610da8ffc9ae864",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "author",
+          "type": "text"
+        },
+        "table": "messages"
+      }
+    }
+  ]
+}
