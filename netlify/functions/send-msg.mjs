@@ -13,9 +13,11 @@ export default async (req, context) => {
     return new Response("Missing credentials", { status: 500 });
   }
 
-  const canSend = await fetch(checkUrl).then((res) => res.json(), {
-    headers: { "x-app-id": appId },
-  });
+  return new Response(JSON.stringify({ msg: "xata connected" }));
+
+  // const canSend = await fetch(checkUrl).then((res) => res.json(), {
+  //   headers: { "x-app-id": appId },
+  // });
 
   return new Response(JSON.stringify({ ...canSend, "x-app-id": appId }));
 
