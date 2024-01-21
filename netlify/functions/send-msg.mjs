@@ -1,11 +1,10 @@
 import nodemailer from "nodemailer";
 import { getXataClient } from "../xata";
 
-export default async (req, context) => {
+export default async (req, _) => {
   const email = Netlify.env.get("EMAIL");
   const pass = Netlify.env.get("PASS");
   const checkUrl = Netlify.env.get("CHECK_URL");
-  const appId = Netlify.env.get("APP_ID");
   const maxCount = Netlify.env.get("MAX_COUNT") || 20;
   const data = await req.json();
   let error = null;
@@ -70,7 +69,7 @@ export default async (req, context) => {
   });
   if (error) return new Response(err, { status: 500 });
   const response = JSON.stringify({
-    msg: "Message sent",
+    msg: "message sent",
     success: true,
     messageId: info.messageId || "no id",
     countToday: messages_today.length + 1,
