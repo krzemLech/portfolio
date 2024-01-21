@@ -26,7 +26,7 @@ export default async (req, context) => {
     .filter({ day: now })
     .select(["day"])
     .getAll();
-  if (messages_today.length > 20) {
+  if (messages_today.length > +maxCount) {
     return new Response("Too many messages, try tomorrow", { status: 403 });
   }
   await db_client.db.messages
