@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { getXataClient } from "@xata.io/netlify";
+import { getXataClient } from "@xata.io/client";
 
 export default async (req, context) => {
   const email = Netlify.env.get("EMAIL");
@@ -17,7 +17,7 @@ export default async (req, context) => {
   const db_client = getXataClient();
   const db_data = await db_client["portfolio-db"].messages.getAll();
 
-  return new Response(JSON.stringify({ msg: "xata connected 6", db_data }));
+  return new Response(JSON.stringify({ msg: "xata connected 7", db_data }));
 
   // const canSend = await fetch(checkUrl).then((res) => res.json(), {
   //   headers: { "x-app-id": appId },
