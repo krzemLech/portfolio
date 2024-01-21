@@ -29,7 +29,7 @@ export default async (req, context) => {
   if (messages_today.length > 20) {
     return new Response("Too many messages, try tomorrow", { status: 403 });
   }
-  await xata.db.messages
+  await db_client.db.messages
     .create({
       author: data.name,
       email: data.email,
