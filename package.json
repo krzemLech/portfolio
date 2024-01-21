@@ -17,6 +17,7 @@
     "sass": "^1.69.7"
   },
   "dependencies": {
+    "@xata.io/netlify": "^0.1.24",
     "nodemailer": "^6.9.8",
     "redis": "^4.6.12"
   }
