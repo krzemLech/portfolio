@@ -19,12 +19,12 @@
 
     h1 {
       font-size: 7rem;
-      margin: 2rem 0;
+      margin: 2rem 0 0;
       font-family: $font-title;
 
       @include mobile {
         font-size: 4rem;
-        margin: 10rem 0 4rem;
+        margin: 0;
       }
     }
 
@@ -121,6 +121,10 @@
       height: 400px;
       max-height: 600px;
       z-index: -1;
+
+      @include mobile {
+        height: 300px;
+      }
 
       filter: brightness(90%);
     }
