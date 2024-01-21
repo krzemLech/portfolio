@@ -17,7 +17,7 @@ export default async (req, context) => {
   const db_client = getXataClient();
   const db_data = await db_client["portfolio-db"].messages.getAll();
 
-  return new Response(JSON.stringify({ msg: "xata connected", db_data }));
+  return new Response(JSON.stringify({ msg: "xata connected 2", db_data }));
 
   // const canSend = await fetch(checkUrl).then((res) => res.json(), {
   //   headers: { "x-app-id": appId },
