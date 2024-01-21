@@ -15,7 +15,7 @@ export default async (req, context) => {
   }
 
   const db_client = getXataClient();
-  const db_data = await db_client["portfolio-db"].messages.getAll();
+  const db_data = await db_client.db.messages.getAll();
 
   return new Response(JSON.stringify({ msg: "xata connected 7", db_data }));
 
