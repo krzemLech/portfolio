@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { getXataClient } from "@xata.io/client";
+import { getXataClient } from "../xata";
 
 export default async (req, context) => {
   const email = Netlify.env.get("EMAIL");

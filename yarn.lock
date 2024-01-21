@@ -2280,7 +2280,7 @@
     node-gyp-build "^4.2.2"
     resolve-from "^5.0.0"
 
-"@xata.io/client@0.28.3":
+"@xata.io/client@0.28.3", "@xata.io/client@^0.28.3":
   version "0.28.3"
   resolved "https://registry.yarnpkg.com/@xata.io/client/-/client-0.28.3.tgz#6010ea9e7c9774e4c60a761f2f8fe8ab8c112b1c"
   integrity sha512-aaXct/xWiYqHyFx2srMCnFDGrKvDA5fa6NEkFGzTHXQdYTai5hTQXcraPHxVHGlPUV3dapQWsguR4YJQugDpqQ==

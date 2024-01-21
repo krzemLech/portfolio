@@ -1,0 +1,7 @@
+{
+  "databaseURL": "https://krzem-s-workspace-hascij.eu-central-1.xata.sh/db/portfolio-db",
+  "codegen": {
+    "output": "netlify/xata.js",
+    "moduleType": "esm"
+  }
+}
