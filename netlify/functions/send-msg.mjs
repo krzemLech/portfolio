@@ -6,6 +6,7 @@ export default async (req, context) => {
   const pass = Netlify.env.get("PASS");
   const checkUrl = Netlify.env.get("CHECK_URL");
   const appId = Netlify.env.get("APP_ID");
+  const maxCount = Netlify.env.get("MAX_COUNT") || 20;
   const data = await req.json();
   let error = null;
 
@@ -14,26 +15,31 @@ export default async (req, context) => {
     return new Response("Missing credentials", { status: 500 });
   }
 
-  const db_client = getXataClient();
-  const db_data = await db_client.db.messages.getAll();
-
-  return new Response(JSON.stringify({ msg: "xata connected 7", db_data }));
-
-  // const canSend = await fetch(checkUrl).then((res) => res.json(), {
-  //   headers: { "x-app-id": appId },
-  // });
-
-  return new Response(JSON.stringify({ ...canSend, "x-app-id": appId }));
-
   if (!data || !data.name || !data.email || !data.subject || !data.message) {
     return new Response("Missing form fields", { status: 400 });
   }
-  const client = await redisConnect();
-  const count = await checkToday(client);
-  // check messages count for today
-  if (count > +maxCount) {
-    return new Response("Too many messages", { status: 503 });
+
+  const db_client = getXataClient();
+  const now = new Date().toISOString().slice(0, 10);
+
+  const messages_today = await db_client.db.messages
+    .filter({ day: now })
+    .select(["day"])
+    .getAll();
+  if (messages_today.length > 20) {
+    return new Response("Too many messages, try tomorrow", { status: 403 });
   }
+  await xata.db.messages
+    .create({
+      author: data.name,
+      email: data.email,
+      subject: data.subject,
+      text: data.message,
+      day: now,
+    })
+    .catch((err) => {
+      error = err;
+    });
 
   // email
   let info = {};
@@ -65,9 +71,9 @@ export default async (req, context) => {
   if (error) return new Response(err, { status: 500 });
   const response = JSON.stringify({
     msg: "Message sent",
-    url: `https://forwardemail.net/my-account/emails`,
+    success: true,
     messageId: info.messageId || "no id",
-    count,
+    countToday: messages_today.length + 1,
   });
   return new Response(response);
 };
