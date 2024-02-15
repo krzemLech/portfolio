@@ -53,15 +53,19 @@ class Form {
       });
     });
   }
-  sendData = async () => {
+  sendData = () => {
     const data = new FormData(this.form);
     const message = Object.fromEntries(data.entries());
-    console.log("sending:", JSON.stringify(message));
-    const response = await fetch("/.netlify/functions/send-msg", {
+    return fetch("/.netlify/functions/send-msg", {
       method: "POST",
       body: JSON.stringify(message),
+    }).then((res) => {
+      if (!res.ok) {
+        console.error(res);
+        throw new Error("error when sending form");
+      }
+      return res.json();
     });
-    console.log("response:", response);
   };
   validateName = () => {
     if (this.name.value.trim().length > 3) return (this.nameValid = true);
@@ -153,7 +157,7 @@ class Form {
         this.form.reset();
       } catch (err) {
         console.error(err);
-        this.giveFeedback("error when sending form", "red");
+        this.giveFeedback("Error when sending constact msg!", "red");
       }
     } else {
       this.giveFeedback("form is not validated", "red");
