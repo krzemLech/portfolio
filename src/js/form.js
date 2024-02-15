@@ -63,7 +63,7 @@ class Form {
       method: "POST",
       body: JSON.stringify(message),
     });
-    console.log("response:", response.ok);
+    console.log("response:", response);
   };
   validateName = () => {
     if (this.name.value.trim().length > 3) return (this.nameValid = true);
