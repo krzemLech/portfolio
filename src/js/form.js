@@ -23,13 +23,11 @@ class Form {
     });
 
     this.btn.addEventListener("mouseenter", (e) => {
-      // e.preventDefault();
-      // this.sendMessage();
       this.validateAll();
     });
     this.btnWrapper.addEventListener("mouseenter", (e) => {
       if (this.btnWrapper.childNodes[1].disabled) {
-        this.giveFeedback("Fill the whole form first!", "red");
+        this.giveFeedback("Fill the form correctly!", "red");
       }
     });
     this.inputs.forEach((input) => {
@@ -157,7 +155,6 @@ class Form {
         console.error(err);
         this.giveFeedback("error when sending form", "red");
       }
-      // TODO: send this to the backend
     } else {
       this.giveFeedback("form is not validated", "red");
     }
