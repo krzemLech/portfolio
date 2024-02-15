@@ -16,6 +16,18 @@ $feedback-anime-time: 6s;
   }
 }
 
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .contact {
   $v-margin-big: 30px;
   font-size: 2rem;
@@ -211,6 +223,32 @@ $feedback-anime-time: 6s;
 
       @include mobile {
         width: $form-width-mobile;
+      }
+    }
+  }
+
+  &-btn-wrapper.loading {
+    input {
+      display: none;
+    }
+    div {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      span {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        background: #ddd;
+        animation: pulse 2s infinite;
+        &:nth-child(2) {
+          animation-delay: 0.5s;
+        }
+        &:nth-child(3) {
+          animation-delay: 1s;
+        }
       }
     }
   }

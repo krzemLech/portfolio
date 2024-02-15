@@ -136,6 +136,10 @@ class Form {
       this.btn.disabled = true;
     }
   };
+  showLoadingState = (isLoading) => {
+    if (!isLoading) return this.btnWrapper.classList.remove("loading");
+    this.btnWrapper.classList.add("loading");
+  };
   giveFeedback = (message, color) => {
     // color can be red or green, it is a class name
     this.feedbackBox.textContent = message;
@@ -152,12 +156,15 @@ class Form {
       try {
         this.validateAll();
         this.manageClasses();
+        this.showLoadingState(true);
         await this.sendData();
         this.giveFeedback("message sent", "green");
         this.form.reset();
       } catch (err) {
         console.error(err);
         this.giveFeedback("Error when sending constact msg!", "red");
+      } finally {
+        this.showLoadingState(false);
       }
     } else {
       this.giveFeedback("form is not validated", "red");
